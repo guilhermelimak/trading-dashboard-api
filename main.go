@@ -4,14 +4,21 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 func main() {
-	r := mux.NewRouter()
-	r.HandleFunc("/mercado/{coin}/{method}", mercadoHandler)
+	router := mux.NewRouter()
+	router.HandleFunc("/mercadobtc/{coin}/{method}", mercadoHandler)
 
-	http.Handle("/", r)
-	err := http.ListenAndServe(":6666", nil)
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:8080"},
+		AllowCredentials: true,
+	})
+
+	http.Handle("/", c.Handler(router))
+
+	err := http.ListenAndServe(":8888", nil)
 
 	if err != nil {
 		panic(err)

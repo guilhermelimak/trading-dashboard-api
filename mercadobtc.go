@@ -26,15 +26,13 @@ func mercadoHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
 	method := vars["method"]
-
 	if method == "" {
-		panic("You need a method (ticker, orderbook or trades)")
+		fmt.Fprint(w, "You need a method (orderbook, trades, ticker)")
 	}
 
 	coin := vars["coin"]
-
 	if coin == "" {
-		panic("You need a coin (LTC, BTC, BCH)")
+		fmt.Fprint(w, "You need a coin (LTC, BTC, BCH)")
 	}
 
 	t := get(coin, method)
