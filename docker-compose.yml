@@ -2,8 +2,8 @@ version: '3'
 services:
   web:
     image: "quay.io/deis/go-dev:latest"
-    working_dir: "/go/src/gotrading"
+    working_dir: "/go/src/trading-dashboard-api"
     ports:
       - "8888:8888"
     volumes:
-      - ".:/go/src/gotrading"
+      - ".:/go/src/trading-dashboard-api"
