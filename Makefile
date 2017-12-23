@@ -1,2 +1,5 @@
-dev:
-	docker-compose run web bash --no-recreate
+default:
+	go run *.go
+
+devenv:
+	docker-compose run --rm web bash
