@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"trading-dashboard-api/mercadobtc"
 
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
@@ -22,7 +23,7 @@ const ClientAddress = "http://localhost:8080"
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/mercadobtc/{coin}/{method}", mercadoHandler)
+	router.HandleFunc("/mercadobtc/{coin}/{method}", mercadobtc.Handler)
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{ClientAddress},

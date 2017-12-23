@@ -1,5 +1,5 @@
 default:
-	go run *.go
+	go run main.go
 
 devenv:
 	docker-compose run --rm web bash

@@ -1,4 +1,4 @@
-package main
+package mercadobtc
 
 import (
 	"fmt"
@@ -22,7 +22,8 @@ func get(currency string, method string) string {
 	return string(buf)
 }
 
-func mercadoHandler(w http.ResponseWriter, r *http.Request) {
+// Handler is used when receiving a request to mercadobitcoin exchange
+func Handler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
 	method := vars["method"]
